@@ -1,0 +1,106 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f8f4f0;
+    color: #2c2c2c;
+  }
+  
+  /* NAVBAR */
+  .navbar {
+    background: #d7b89c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    position: sticky;
+    top: 0;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #2c2c2c;
+    margin-right: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .navbar .nav-right .btn {
+    margin-left: 1rem;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn.login {
+    background: #b08a6f;
+    color: #fff;
+  }
+  
+  .btn.signup {
+    background: #2c2c2c;
+    color: #fff;
+  }
+  
+  /* HERO SECTION */
+  .hero {
+    background: url("your-background.jpg") center/cover no-repeat;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-overlay {
+    background: rgba(255, 245, 235, 0.85);
+    padding: 3rem;
+    border-radius: 25px;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    background: #d7b89c;
+    padding: 0.2rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  
+  .tagline {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 2rem;
+  }
+  
+  .get-started {
+    background: #2c2c2c;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .get-started:hover {
+    background: #4a3b32;
+  }
+  
