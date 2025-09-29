@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CIVICO Dashboard - Real-time disaster response management">
+    <title>CIVICO - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="nav-brand">CIVICO</div>
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#live-map" class="nav-link">Live Map</a>
+                <a href="#reports" class="nav-link">Reports</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#volunteers" class="nav-link">Volunteers</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn btn-profile">
+                    <i class="fas fa-user"></i>
+                    <span>Admin</span>
+                </button>
+                <button class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-container">
+        <!-- Header with Stats -->
+        <header class="dashboard-header">
+            <div class="dashboard-title">
+                <h1>Emergency Response Dashboard</h1>
+                <p>Last updated: <span id="last-updated">Just now</span></p>
+            </div>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="stat-info">
+                        <h3>Active Emergencies</h3>
+                        <p class="stat-number" id="active-emergencies">24</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>Active Volunteers</h3>
+                        <p class="stat-number" id="active-volunteers">156</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-ambulance"></i></div>
+                    <div class="stat-info">
+                        <h3>Resources Deployed</h3>
+                        <p class="stat-number" id="resources-deployed">42</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info">
+                        <h3>Resolved Today</h3>
+                        <p class="stat-number" id="resolved-today">18</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Live Map Section -->
+            <section class="dashboard-section" id="live-map">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marked-alt"></i> Live Disaster Map</h2>
+                    <div class="map-filters">
+                        <button class="btn btn-filter active">All</button>
+                        <button class="btn btn-filter">Floods</button>
+                        <button class="btn btn-filter">Earthquakes</button>
+                        <button class="btn btn-filter">Fires</button>
+                        <button class="btn btn-filter">Medical</button>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div id="disaster-map">
+                        <!-- Map will be rendered here by JavaScript -->
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Live disaster map loading...</p>
+                        </div>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-item"><span class="legend-icon flood"></span> Flood</div>
+                        <div class="legend-item"><span class="legend-icon earthquake"></span> Earthquake</div>
+                        <div class="legend-item"><span class="legend-icon fire"></span> Fire</div>
+                        <div class="legend-item"><span class="legend-icon medical"></span> Medical</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Reports -->
+            <section class="dashboard-section" id="reports">
+                <div class="section-header">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Recent Emergency Reports</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Report
+                    </button>
+                </div>
+                <div class="reports-container">
+                    <div class="report-card high-priority">
+                        <div class="report-priority"></div>
+                        <div class="report-content">
+                            <div class="report-header">
+                                <h3>Severe Flooding in Downtown</h3>
+                                <span class="report-time">15 min ago</span>
+                            </div>
+                            <p class="report-location"><i class="fas fa-map-marker-alt"></i> 1.2km from your location</p>
+                            <p class="report-description">Water levels rising rapidly in the downtown area. Multiple families trapped in their homes.</p>
+                            <div class="report-footer">
+                                <span class="report-category flood">Flood</span>
+                                <div class="report-actions">
+                                    <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Assign Volunteer"><i class="fas fa-user-plus"></i></button>
+                                    <button class="btn-icon" title="Mark as Resolved"><i class="fas fa-check"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More report cards would go here -->
+                </div>
+            </section>
+
+            <!-- Resource Management -->
+            <section class="dashboard-section" id="resources">
+                <div class="section-header">
+                    <h2><i class="fas fa-boxes"></i> Resource Management</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Resources
+                    </button>
+                </div>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-ambulance"></i></div>
+                        <div class="resource-info">
+                            <h3>Ambulances</h3>
+                            <div class="resource-stats">
+                                <div class="resource-available">
+                                    <span class="resource-count">8</span>
+                                    <span class="resource-label">Available</span>
+                                </div>
+                                <div class="resource-in-use">
+                                    <span class="resource-count">5</span>
+                                    <span class="resource-label">In Use</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More resource cards would go here -->
+                </div>
+            </section>
+
+            <!-- Volunteer Coordination -->
+            <section class="dashboard-section" id="volunteers">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Volunteer Coordination</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Add Volunteer
+                    </button>
+                </div>
+                <div class="volunteer-list">
+                    <div class="volunteer-card">
+                        <div class="volunteer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Volunteer">
+                            <span class="volunteer-status online"></span>
+                        </div>
+                        <div class="volunteer-info">
+                            <h3>John Doe</h3>
+                            <p class="volunteer-skill">Medical, First Aid</p>
+                            <div class="volunteer-stats">
+                                <span><i class="fas fa-tasks"></i> 12 tasks</span>
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                            </div>
+                        </div>
+                        <div class="volunteer-actions">
+                            <button class="btn btn-icon" title="Message"><i class="fas fa-comment"></i></button>
+                            <button class="btn btn-icon" title="Assign Task"><i class="fas fa-tasks"></i></button>
+                        </div>
+                    </div>
+                    <!-- More volunteer cards would go here -->
+                </div>
+            </section>
+
+            <!-- Analytics & Reports -->
+            <section class="dashboard-section" id="analytics">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Analytics & Reports</h2>
+                    <select class="analytics-period">
+                        <option>Last 24 Hours</option>
+                        <option selected>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>Custom Range</option>
+                    </select>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-chart">
+                        <h3>Emergency Reports by Type</h3>
+                        <div class="chart-container">
+                            <!-- Chart will be rendered here by JavaScript -->
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-pie"></i>
+                                <p>Emergency reports chart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <h3>Response Times</h3>
+                        <div class="chart-container">
+                            <!-- Chart will be rendered here by JavaScript -->
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Response times chart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-content">
+            <div class="footer-logo">CIVICO</div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 CIVICO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- In a real application, you would include map and chart libraries here -->
+    <script>
+        // This would be replaced with actual map and chart initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update last updated time
+            const now = new Date();
+            document.getElementById('last-updated').textContent = 
+                `Today at ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+            
+            // Simulate real-time updates
+            setInterval(() => {
+                // In a real app, this would fetch data from an API
+                const emergencies = document.getElementById('active-emergencies');
+                const currentEmergencies = parseInt(emergencies.textContent);
+                emergencies.textContent = Math.max(0, currentEmergencies + (Math.random() > 0.7 ? 1 : -1));
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
